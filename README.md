@@ -4,7 +4,7 @@ MyFinance is a personal finance management app built using Flutter with SQLite d
 
 ## Getting Started
 
-Dashboard with Financial Summary
+## Dashboard with Financial Summary
 Displays:
 💰 Total Income
 💸 Total Expenses
