@@ -1,6 +1,6 @@
 # myfinance
 
-A new Flutter project.
+MyFinance is a personal finance management app built using Flutter with SQLite databases for storage. The app allows users to track their income, expenses, and overall financial health. It features a user-friendly dashboard, pie charts for visualizing spending patterns, and supports categories and notifications for upcoming payment dates.
 
 ## Getting Started
 
