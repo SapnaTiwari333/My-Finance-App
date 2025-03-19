@@ -4,9 +4,9 @@ MyFinance is a personal finance management app built using Flutter with SQLite d
 
 ## Getting Started
 
-## Dashboard with Financial Summary
+### Dashboard with Financial Summary
 Displays:
-##Total Income
+Total Income
 Total Expenses
 Net Balance
 Pie chart to visualize spending categories
@@ -16,7 +16,7 @@ Total Categories
 Upcoming Payments
 
 
-## Transactions Management
+### Transactions Management
 Users can:
 Add, Edit, Delete transactions
 Select the transaction type: Income or Expense
@@ -29,7 +29,7 @@ UPDATE → Modify existing transactions
 DELETE → Remove transactions
 
 
-## Categories Management
+##### Categories Management
 Users can:
 Add, Edit, Delete categories
 Define whether a category belongs to Income or Expense
@@ -38,10 +38,10 @@ Categories are saved in a separate SQLite database:
 categoriesDb.db
 
 
-## Database Structure
+##### Database Structure
 The app uses two separate SQLite databases:
 
-## Transaction Database: transactionDb.db
+##### Transaction Database: transactionDb.db
 Table: transactions
 Columns:
 s_no: Transaction ID (Primary Key, auto-increment)
@@ -52,7 +52,7 @@ category: Associated category
 date: Date of the transaction
 
 
-## Category Database: categoriesDb.db
+#### Category Database: categoriesDb.db
 Table: categories
 Columns:
 s_no: Category ID (Primary Key, auto-increment)
