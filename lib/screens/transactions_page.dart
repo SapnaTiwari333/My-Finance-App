@@ -30,11 +30,14 @@ class TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.redAccent.shade100,
         title: const Center(
-          child: Text(
-            'TRANSACTIONS',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'TRANSACTIONS',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,letterSpacing:0.8),
+            ),
           ),
         ),
       ),
@@ -45,56 +48,66 @@ class TransactionPageState extends State<TransactionPage> {
               ? ListView.builder(
             itemCount: allTransactions.length,
             itemBuilder: (_, index) {
-              return ListTile(
-                  leading: Text('${index + 1}'),
-                  title: Text(allTransactions[index][DBHelper.COLUMN_TRANSACTION_TITLE]),
-                  subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Amount: ₹${allTransactions[index][DBHelper.COLUMN_TRANSACTION_AMOUNT]}'),
-                        Text('Type: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_TYPE]}'),
-                        Text('Category: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_CATEGORY]}'),
-                        Text('Date: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_DATE]}'),
-                      ]
-                  ),
-
-                trailing: SizedBox(
-                  width:60,
-                  child:Row(
-                    mainAxisAlignment:MainAxisAlignment.center,
-                    children:[
-                      InkWell(
-                        onTap:(){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context)=>AddTransactions(
-                                isUpdate: true,
-                                sno: allTransactions[index][DBHelper.COLUMN_TRANSACTION_SNO],
-                                title: allTransactions[index][DBHelper.COLUMN_TRANSACTION_TITLE],
-                                amount: allTransactions[index][DBHelper.COLUMN_TRANSACTION_AMOUNT],
-                                category: allTransactions[index][DBHelper.COLUMN_TRANSACTION_CATEGORY],
-                                type: allTransactions[index][DBHelper.COLUMN_TRANSACTION_TYPE],
-                              ),
-                              )
-                          );
-                          context.read<TransactionProvider>().getInitialTransactions();
-                        },
-                        child:Icon(Icons.edit),
-
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  elevation: 11,
+                  child: ListTile(
+                      leading: Text('${index + 1}'),
+                      title: Text(allTransactions[index][DBHelper.COLUMN_TRANSACTION_TITLE],
+                        style: TextStyle(
+                            fontSize:18,fontWeight:FontWeight.bold
+                        ),
+                      ),
+                      subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Amount: ₹${allTransactions[index][DBHelper.COLUMN_TRANSACTION_AMOUNT]}'),
+                            Text('Type: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_TYPE]}'),
+                            Text('Category: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_CATEGORY]}'),
+                            Text('Date: ${allTransactions[index][DBHelper.COLUMN_TRANSACTION_DATE]}'),
+                          ]
                       ),
 
+                    trailing: SizedBox(
+                      width:60,
+                      child:Row(
+                        mainAxisAlignment:MainAxisAlignment.center,
+                        children:[
+                          InkWell(
+                            onTap:(){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context)=>AddTransactions(
+                                    isUpdate: true,
+                                    sno: allTransactions[index][DBHelper.COLUMN_TRANSACTION_SNO],
+                                    title: allTransactions[index][DBHelper.COLUMN_TRANSACTION_TITLE],
+                                    amount: allTransactions[index][DBHelper.COLUMN_TRANSACTION_AMOUNT],
+                                    category: allTransactions[index][DBHelper.COLUMN_TRANSACTION_CATEGORY],
+                                    type: allTransactions[index][DBHelper.COLUMN_TRANSACTION_TYPE],
+                                  ),
+                                  )
+                              );
+                              context.read<TransactionProvider>().getInitialTransactions();
+                            },
+                            child:Icon(Icons.edit),
 
-                      InkWell(
-                        onTap:() {
-                          int sno=allTransactions[index][DBHelper.COLUMN_TRANSACTION_SNO];
-                          context.read<TransactionProvider>().deleteTransaction(sno);
-                        },
-                        child: Icon(Icons.delete),
-                      )
-                    ],
+                          ),
+
+
+                          InkWell(
+                            onTap:() {
+                              int sno=allTransactions[index][DBHelper.COLUMN_TRANSACTION_SNO];
+                              context.read<TransactionProvider>().deleteTransaction(sno);
+                            },
+                            child: Icon(Icons.delete,color:Colors.redAccent),
+                          )
+                        ],
+                      ),
+                    ),
+
                   ),
                 ),
-
               );
             },
           )
@@ -105,6 +118,7 @@ class TransactionPageState extends State<TransactionPage> {
       ),
 
       floatingActionButton: FloatingActionButton(
+
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(

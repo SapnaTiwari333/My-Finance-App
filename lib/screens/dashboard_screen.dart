@@ -51,40 +51,42 @@ class DashboardState extends State<DashboardScreen>{
         index:selectedIndex,
         children:pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon:Icon(Icons.home,size:30),
-              label:"HOME",
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-              label: "Transactions"
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.category),
-              label: "Category",
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.notifications),
-              label: "Notifications",
-            ),
-           /* BottomNavigationBarItem(icon: Icon(Icons.settings),
-              label: "Settings"
-            ),*/
-          ],
-        currentIndex: selectedIndex,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.black54,
-        selectedLabelStyle: TextStyle(
-          fontSize:15,
-          fontWeight:FontWeight.bold,
-
+      bottomNavigationBar: Card(
+        child: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon:Icon(Icons.home,size:30),
+                label:"HOME",
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.list),
+                label: "Transactions"
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.category),
+                label: "Category",
+              ),
+              BottomNavigationBarItem(icon: Icon(Icons.notifications),
+                label: "Notifications",
+              ),
+             /* BottomNavigationBarItem(icon: Icon(Icons.settings),
+                label: "Settings"
+              ),*/
+            ],
+          currentIndex: selectedIndex,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.black54,
+          selectedLabelStyle: TextStyle(
+            fontSize:15,
+            fontWeight:FontWeight.bold,
+        
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontSize:12,
+              fontWeight:FontWeight.bold
+          ),
+          onTap: onItemTapped,
         ),
-        unselectedLabelStyle: TextStyle(
-          fontSize:12,
-            fontWeight:FontWeight.bold
-        ),
-        onTap: onItemTapped,
       ),
     );
 

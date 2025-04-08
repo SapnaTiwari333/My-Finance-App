@@ -86,7 +86,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: const Text("My Finance")),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.redAccent.shade100,
       ),
       body: isEmpty ? buildEmptyState() : buildDashboard(),
       /*floatingActionButton: FloatingActionButton.extended(

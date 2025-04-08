@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:myfinance/models/transaction/db_helper.dart";
+import "package:myfinance/providers/category_provider.dart";
 import "package:myfinance/providers/transaction_provider.dart";
 import "package:myfinance/screens/dashboard_screen.dart";
-
+import "package:myfinance/models/category/db_helper_category.dart";
 
 
 import "package:provider/provider.dart";
@@ -11,9 +12,13 @@ import "package:provider/provider.dart";
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();//Ensure DB initialized before starting
   runApp(MultiProvider
-    (providers: [ChangeNotifierProvider(
-    create: (context)=> TransactionProvider(dbHelper: DBHelper.getInstance),)],
-      child:FinanceApp(),
+    (providers: [
+      ChangeNotifierProvider(
+    create: (context)=> TransactionProvider(dbHelper: DBHelper.getInstance),
+  ),
+    ChangeNotifierProvider(create: (context)=>CategoryProvider(dbHelper: DbHelperCategory.getInstance))
+  ],
+  child:FinanceApp(),
   ));
 }
 

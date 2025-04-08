@@ -1,5 +1,4 @@
 
-
 import "package:flutter/material.dart";
 import 'package:intl/intl.dart';
 
@@ -68,7 +67,7 @@ class AddTransactionsState extends State<AddTransactions> {
 
     return Scaffold(
       appBar:AppBar(
-        backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.redAccent.shade100,
         title:Center(
             child: Text(widget.isUpdate? "Update Transaction":"Add Transactions",
                 style:TextStyle(
