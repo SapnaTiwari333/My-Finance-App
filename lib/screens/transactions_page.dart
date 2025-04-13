@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/models/transaction/db_helper.dart';
+import 'package:myfinance/providers/home_page_provider.dart';
 import 'package:myfinance/providers/transaction_provider.dart';
 import 'package:myfinance/screens/add_transaction.dart';
 import 'package:provider/provider.dart';
@@ -89,6 +90,7 @@ class TransactionPageState extends State<TransactionPage> {
                                   )
                               );
                               context.read<TransactionProvider>().getInitialTransactions();
+                              context.read<HomePageProvider>().updateTransactionData();
                             },
                             child:Icon(Icons.edit),
 
@@ -99,6 +101,7 @@ class TransactionPageState extends State<TransactionPage> {
                             onTap:() {
                               int sno=allTransactions[index][DBHelper.COLUMN_TRANSACTION_SNO];
                               context.read<TransactionProvider>().deleteTransaction(sno);
+                              context.read<HomePageProvider>().updateTransactionData();
                             },
                             child: Icon(Icons.delete,color:Colors.redAccent),
                           )

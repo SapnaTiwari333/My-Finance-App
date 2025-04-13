@@ -74,7 +74,7 @@ class DashboardState extends State<DashboardScreen>{
               ),*/
             ],
           currentIndex: selectedIndex,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Colors.redAccent.shade100,
           unselectedItemColor: Colors.black54,
           selectedLabelStyle: TextStyle(
             fontSize:15,

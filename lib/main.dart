@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:myfinance/models/transaction/db_helper.dart";
 import "package:myfinance/providers/category_provider.dart";
+import "package:myfinance/providers/home_page_provider.dart";
 import "package:myfinance/providers/transaction_provider.dart";
 import "package:myfinance/screens/dashboard_screen.dart";
 import "package:myfinance/models/category/db_helper_category.dart";
@@ -16,7 +17,11 @@ void main() async{
       ChangeNotifierProvider(
     create: (context)=> TransactionProvider(dbHelper: DBHelper.getInstance),
   ),
-    ChangeNotifierProvider(create: (context)=>CategoryProvider(dbHelper: DbHelperCategory.getInstance))
+    ChangeNotifierProvider(create: (context)=>CategoryProvider(dbHelper: DbHelperCategory.getInstance)
+    ),
+    ChangeNotifierProvider(
+      create:(context)=>HomePageProvider(dbHelper: DBHelper.getInstance),
+    )
   ],
   child:FinanceApp(),
   ));

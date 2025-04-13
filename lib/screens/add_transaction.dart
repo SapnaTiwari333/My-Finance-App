@@ -1,6 +1,7 @@
 
 import "package:flutter/material.dart";
 import 'package:intl/intl.dart';
+import 'package:myfinance/providers/home_page_provider.dart';
 
 import 'package:myfinance/providers/transaction_provider.dart';
 import 'package:provider/provider.dart';
@@ -272,6 +273,7 @@ class AddTransactionsState extends State<AddTransactions> {
                                   categoryController.text,
                                   dateController.text);
                             }
+                            context.read<HomePageProvider>().updateTransactionData();
                             Navigator.pop(context);
                           }
                         },
