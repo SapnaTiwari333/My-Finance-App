@@ -1,1 +1,4 @@
 dart pub global activate flutterfire_cli
+
+This will revert everything to the state before the merge was started.
+git merge --abort
