@@ -1,10 +1,13 @@
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:myfinance/firebase_options.dart";
 import "package:myfinance/models/transaction/db_helper.dart";
 import "package:myfinance/providers/category_provider.dart";
 import "package:myfinance/providers/home_page_provider.dart";
 import "package:myfinance/providers/transaction_provider.dart";
 import "package:myfinance/screens/dashboard_screen.dart";
 import "package:myfinance/models/category/db_helper_category.dart";
+import "package:myfinance/screens/signup_screen.dart";
 
 
 import "package:provider/provider.dart";
@@ -12,6 +15,8 @@ import "package:provider/provider.dart";
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();//Ensure DB initialized before starting
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider
     (providers: [
       ChangeNotifierProvider(
@@ -38,7 +43,7 @@ class FinanceApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
-      home: const DashboardScreen(),
+      home: Signuppage(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:myfinance/screens/category_screen.dart";
 import "package:myfinance/screens/homepage.dart";
+import "package:myfinance/screens/sidebar_screen.dart";
 import "package:myfinance/screens/transactions_page.dart";
 
 void main() {
@@ -38,15 +39,34 @@ class DashboardState extends State<DashboardScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Center(
-          child: Text(
-            'MY FINANCE',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          ),
+      drawer: Drawer(
+        child: SideBarScreen(),
+      ),
+      appBar: AppBar(
+        //title: const Center(child: Text("My Finance")),
+        backgroundColor: Colors.redAccent.shade100,
+
+        leading: Builder(
+          builder: (context) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                highlightColor:Colors.transparent,
+                onTap: (){
+                  Scaffold.of(context).openDrawer();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+
+                    child: Icon(Icons.menu,size: 30,),
+                  ),
+                ),
+              );
+          }
         ),
-      ),*/
+        ),
+
       body:IndexedStack(
         index:selectedIndex,
         children:pages,
