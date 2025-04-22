@@ -2,3 +2,6 @@ dart pub global activate flutterfire_cli
 
 This will revert everything to the state before the merge was started.
 git merge --abort
+
+You need to pull the latest changes from the remote branch first, then push your changes:
+git pull origin main --rebase
