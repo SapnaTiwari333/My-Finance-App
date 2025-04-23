@@ -131,3 +131,72 @@ dependencies:
   shared_preferences: ^2.2.2
   sqflite: ^2.3.2
   flutter_local_notifications: ^17.0.0
+```
+
+#### 2. Add Firebase SDK to Android
+
+Edit `android/build.gradle`:
+```yaml
+buildscript{
+    ext.kotlin_version = '2.1.0'
+    repositories{
+        google()
+        mavenCentral()
+    }
+
+
+    dependencies{
+        classpath 'com.android.tools.build:gradle:8.9.1'
+        classpath 'com.google.gms:google-services:4.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+
+    }
+}
+```
+
+Edit `android/app/build.gradle`:
+```yaml
+apply plugin: 'com.google.gms.google-services'
+```
+
+```yaml
+dependencies{
+    implementation platform('com.google.firebase:firebase-bom:33.12.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-messaging'
+}
+```
+
+#### 3. Initialize Firebase in Flutter
+```yaml
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart'; 
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(FinanceApp());
+}
+```
+
+#### 4. Generate firebase_options.dart
+
+- Install the Firebase CLI via npm by running the following command:
+```yaml
+npm install -g firebase-tools
+```
+
+- Run firebase login
+- Run the FlutterFire CLI
+```yaml
+dart pub global activate flutterfire_cli
+```
+
+```yaml
+flutterfire configure --project=my-finance-app-bd78f
+```
+This automatically registers your per-platform apps with Firebase and adds a lib/firebase_options.dart configuration file to your Flutter project.
+
