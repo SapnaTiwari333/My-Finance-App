@@ -133,6 +133,8 @@ dependencies:
   flutter_local_notifications: ^17.0.0
 ```
 
+---
+
 #### 2. Add Firebase SDK to Android
 
 Edit `android/build.gradle`:
@@ -168,6 +170,8 @@ dependencies{
 }
 ```
 
+---
+
 #### 3. Initialize Firebase in Flutter
 ```yaml
 import 'package:firebase_core/firebase_core.dart';
@@ -181,6 +185,8 @@ void main() async {
   runApp(FinanceApp());
 }
 ```
+
+---
 
 #### 4. Generate firebase_options.dart
 
