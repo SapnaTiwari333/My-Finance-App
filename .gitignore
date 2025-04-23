@@ -32,7 +32,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+
+#Google Services (e.g. APIs or Firebase)
 google-services.json
+firebase.json
+firebase_options.dart
+
 
 # Symbolication related
 app.*.symbols
@@ -46,12 +51,7 @@ app.*.map.json
 /android/app/release
 
 
-# ================================
-# FIREBASE FILES
-# ================================
-# Firebase config files (keep them private)
-google-services.json
-ios/Runner/GoogleService-Info.plist
+
 
 
 
